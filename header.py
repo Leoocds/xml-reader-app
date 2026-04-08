@@ -51,6 +51,9 @@ if uploaded_file:
 
             csv = df.to_csv(index=False).encode('utf-8')
 
+            excel_file = "relatorio.xlsx"
+            df.to_excel(excel_file, index=False)
+
             with open(excel_file, "rb") as f:
                 st.download_button(
                     label="⬇️ Baixar Excel",
