@@ -4,7 +4,9 @@ import pandas as pd
 
 st.set_page_config(page_title="Leitor de XML", layout="wide")
 
-st.title("📄 Leitor de XML → Tabela")
+st.title("📄 Leitor de XML")
+
+st.subheader("Adicione seu arquivo XML para vê-lo em forma de tabela.")
 
 uploaded_file = st.file_uploader("Faça upload do arquivo XML", type=["xml"])
 
@@ -48,15 +50,6 @@ if uploaded_file:
             st.dataframe(df, use_container_width=True)
 
             csv = df.to_csv(index=False).encode('utf-8')
-            st.download_button(
-                label="⬇️ Baixar CSV",
-                data=csv,
-                file_name='relatorio.csv',
-                mime='text/csv'
-            )
-
-            excel_file = "relatorio.xlsx"
-            df.to_excel(excel_file, index=False)
 
             with open(excel_file, "rb") as f:
                 st.download_button(
